@@ -2,6 +2,7 @@
   "extends": "../../../packages/live-share/tsconfig.json",
   "include": ["./src"],
   "compilerOptions": {
+    "module": "ESNext",
     "jsx": "react-jsx",
     "outDir": "/tmp"
   },

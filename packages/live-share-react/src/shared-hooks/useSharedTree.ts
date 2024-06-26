@@ -50,12 +50,18 @@ export function useSharedTree<
      */
     React.useEffect(() => {
         if (!sharedTree) return;
+        
+        let _treeView: TreeView<TSchema>;
         try {
             // Create a `treeView` with the provided `treeViewConfiguration`
-            const _treeView = sharedTree.viewWith(treeViewConfiguration);
+            _treeView = sharedTree.viewWith(treeViewConfiguration);
             setTreeView(_treeView);
         } catch (err) {
             console.error(err);
+        }
+
+        return () => {
+            _treeView.dispose();
         }
     }, [sharedTree, treeViewConfiguration]);
 
